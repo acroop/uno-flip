@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 
 const UnoCard = ({ number, color, isWild = false, isSkip = false }) => {
@@ -33,13 +34,13 @@ const UnoCard = ({ number, color, isWild = false, isSkip = false }) => {
       ) : isSkip ? (
         <>
           <div className="absolute top-4 left-4 text-white text-2xl font-bold drop-shadow">
-            ⛔
+          <img src="/assets/block.png" className="w-8"/>
           </div>
           <div className="absolute bottom-4 right-4 text-white text-2xl font-bold drop-shadow rotate-180">
-            ⛔
+          <img src="/assets/block.png" className="w-8"/>
           </div>
           <div className="text-white text-8xl font-bold drop-shadow-lg z-10">
-            ⛔
+          <img src="/assets/block.png" className="w-32"/>
           </div>
         </>
       ) : (
