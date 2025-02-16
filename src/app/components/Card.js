@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 
-const UnoCard = ({ number, color, isWild = false, isSkip = false }) => {
+const UnoCard = ({ number, color, isWild = false, isSkip = false, isDraw = false }) => {
   const gradients = {
     red: "from-red-500 to-red-600",
     blue: "from-blue-500 to-blue-600",
@@ -19,7 +19,7 @@ const UnoCard = ({ number, color, isWild = false, isSkip = false }) => {
         <div className="absolute w-32 h-32 bg-white/10 rounded-full"></div>
       )}
 
-      {!isWild && !isSkip ? (
+      {!isWild && !isSkip && !isDraw ? (
         <>
           <div className="absolute top-4 left-4 text-white text-2xl font-bold drop-shadow">
             {number}
@@ -31,26 +31,65 @@ const UnoCard = ({ number, color, isWild = false, isSkip = false }) => {
             {number}
           </div>
         </>
-      ) : isSkip ? (
+      ) : isSkip && !isDraw ? (
         <>
           <div className="absolute top-4 left-4 text-white text-2xl font-bold drop-shadow">
-          <img src="/assets/block.png" className="w-8"/>
+            <img src="/assets/block.png" className="w-8" />
           </div>
           <div className="absolute bottom-4 right-4 text-white text-2xl font-bold drop-shadow rotate-180">
-          <img src="/assets/block.png" className="w-8"/>
+            <img src="/assets/block.png" className="w-8" />
           </div>
           <div className="text-white text-8xl font-bold drop-shadow-lg z-10">
-          <img src="/assets/block.png" className="w-32"/>
+            <img src="/assets/block.png" className="w-32" />
           </div>
         </>
-      ) : (
-        <div className="flex flex-wrap justify-center items-center gap-2">
-          <div className="w-16 h-16 bg-red-500 rounded-full"></div>
-          <div className="w-16 h-16 bg-blue-500 rounded-full"></div>
-          <div className="w-16 h-16 bg-yellow-400 rounded-full"></div>
-          <div className="w-16 h-16 bg-green-500 rounded-full"></div>
-        </div>
-      )}
+      ) : isWild && isDraw ? (
+        <>
+          {/* DRAW 2 */}
+          <div className="absolute top-4 left-4 text-white text-2xl font-bold drop-shadow">
+            +2
+          </div>
+          <div className="absolute bottom-4 right-4 text-white text-2xl font-bold drop-shadow rotate-180">
+            +2
+          </div>
+          <div className="text-white text-9xl font-bold drop-shadow-lg z-10">
+            <div className="flex flex-wrap justify-center items-center">
+              <img src="/assets/add.png" className="w-8" />
+              <img src="/assets/2cards.png" className="w-28" />
+            </div>
+          </div>
+
+        </>
+      ) : isDraw ?
+        (
+          <>
+            {/* DRAW 1 */}
+            <div className="absolute top-4 left-4 text-white text-2xl font-bold drop-shadow">
+              +1
+            </div>
+            <div className="absolute bottom-4 right-4 text-white text-2xl font-bold drop-shadow rotate-180">
+              +1
+            </div>
+            <div className="text-white text-9xl font-bold drop-shadow-lg z-10 p-3">
+              <div className="flex justify-center items-center p-5">
+                <img src="/assets/add.png" className="w-8 gap-1 left-0" />
+                {/* <img src="/assets/1card.png" className="w-24" /> */}
+                <div className="bg-white rounded-xl shadow-lg p-6 w-16 max-w-3xl h-20 mx-auto">
+                  
+                </div>
+
+              </div>
+            </div>
+          </>
+        )
+        : (
+          <div className="flex flex-wrap justify-center items-center gap-2">
+            <div className="w-16 h-16 bg-red-500 rounded-full"></div>
+            <div className="w-16 h-16 bg-blue-500 rounded-full"></div>
+            <div className="w-16 h-16 bg-yellow-400 rounded-full"></div>
+            <div className="w-16 h-16 bg-green-500 rounded-full"></div>
+          </div>
+        )}
     </div>
   );
 };
@@ -59,6 +98,7 @@ export const RedSkip = () => <UnoCard color="red" isSkip={true} />;
 export const BlueSkip = () => <UnoCard color="blue" isSkip={true} />;
 export const YellowSkip = () => <UnoCard color="yellow" isSkip={true} />;
 export const GreenSkip = () => <UnoCard color="green" isSkip={true} />;
+export const Draw2 = () => <UnoCard color="black" isWild={true} isDraw={true} />;
 
 // Predefined red UNO cards
 export const Red0 = () => <UnoCard number={0} color="red" />;
@@ -71,6 +111,8 @@ export const Red6 = () => <UnoCard number={6} color="red" />;
 export const Red7 = () => <UnoCard number={7} color="red" />;
 export const Red8 = () => <UnoCard number={8} color="red" />;
 export const Red9 = () => <UnoCard number={9} color="red" />;
+export const RedDraw = () => <UnoCard color="red" isDraw={true} />;
+
 
 // Predefined blue UNO cards
 export const Blue0 = () => <UnoCard number={0} color="blue" />;

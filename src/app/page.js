@@ -41,26 +41,30 @@ import {
   Green8,
   Green9,
   WildCard,
-  RedSkip,
-  AllSkipOrange,
-  AllSkipBlue,
-  AllSkipPurple,
-  AllSkipPink
+  BlueDraw,
+  // Draw2,
+  // RedDraw,
+  // RedSkip,
+  // AllSkipOrange,
+  // AllSkipBlue,
+  // AllSkipPurple,
+  // AllSkipPink
 } from "./components/DarkCard";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8 text-black">
       <h1 className="text-3xl font-bold text-center mb-8">UNO Cards</h1>
 
       {/* Wild Card */}
       <h2 className="text-2xl font-semibold mt-6 mb-4">Wild Card</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <WildCard />
+        {/* <Draw2 /> */}
       </div>
 
       {/* Red Cards */}
-      <h2 className="text-2xl font-semibold mt-6 mb-4">Red Cards</h2>
+      <h2 className="text-2xl font-semibold mt-6 mb-4 text-black">Red Cards</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <Red0 />
         <Red1 />
@@ -72,8 +76,9 @@ export default function Home() {
         <Red7 />
         <Red8 />
         <Red9 />
-        <RedSkip/>
-        <AllSkipOrange/>
+        {/* <RedDraw /> */}
+        {/* <RedSkip/>
+        <AllSkipOrange/> */}
 
       </div>
 
@@ -90,7 +95,8 @@ export default function Home() {
         <Blue7 />
         <Blue8 />
         <Blue9 />
-        <AllSkipBlue/>
+        <BlueDraw/>
+        {/* <AllSkipBlue/> */}
       </div>
 
       {/* Yellow Cards */}
